@@ -33,31 +33,16 @@ io.on('connection', (socket) => {
         answerHistory.push(newCalc);
         console.log(answerHistory);
 
-        io.emit('new calculation', answerHistory);
+        io.emit('new calculation', answerHistory.slice(-10));
     });
 
     //if new to the app, will get what is in current calculation history
     socket.on('getHistory', () => {
-        io.emit('new calculation', answerHistory);
+        io.emit('new calculation', answerHistory.slice(-10));
 
     })
 
 });
-
-//function - post new equations to server
-app.post('/newequation', (req, res) => {
-
-    console.log(req.body);
-    const { numOne, numTwo, operator }  = req.body;
-    const answer = mathequations(numOne, numTwo, operator);
-    answerHistory.push(answer);
-
-    //answer from two variables put into answerHistory and sent back to front end
-    res.status(200).send(answerHistory); 
-})
-
-
-
 
 
 //starting up server

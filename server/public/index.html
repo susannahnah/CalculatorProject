@@ -26,9 +26,9 @@
 
         function sumButtonHandler() {
             const newCalc = {
-            numOne: $('#firstNumber').val(),
-            numTwo: $('#secondNumber').val(),
-            operator: operator
+                numOne: $('#firstNumber').val(),
+                numTwo: $('#secondNumber').val(),
+                operator: operator
             };
             console.log(newCalc);
             socket.emit('calculation', newCalc);
@@ -43,7 +43,7 @@
             // empty the ul of any elements it has
             $('#postCalcs').empty(); 
             // append the values of each calculation from the array to the DOM
-            for (let calc of answerHistory) {
+            for (let calc of answerHistory.reverse()) {
                 $('#postCalcs').append(`
                     <li>
                         <p>
