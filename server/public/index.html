@@ -16,7 +16,7 @@
             $('.operatorButton').on('click', getOperator);
             $('#sumButton').on('click', sumButtonHandler);
             $('#clearButton').on('click', clearButtonHandler);
-        
+            socket.emit('getHistory');
         };
 
         function getOperator() {
@@ -42,6 +42,7 @@
         socket.on('new calculation', function(answerHistory){
             $('#postCalcs').append($('<li>').text(answerHistory));
         });
+
 
     </script>
     <title>jquery server side calculator</title>

@@ -5,7 +5,7 @@ const io = require('socket.io')(http);
 const mathequations = require("./modules/mathequations");
 
 //where math answers are stored on the server side
-const answerHistory = [1, 2];
+const answerHistory = [];
 
 //creating server and defining port
 const PORT = process.env.PORT || 5000;
@@ -25,11 +25,22 @@ io.on('connection', (socket) => {
 
         const { numOne, numTwo, operator }  = newCalc;
         const answer = mathequations(numOne, numTwo, operator);
-        answerHistory.push(answer);
+
+        //adding new key value "answer" 
+        newCalc.answer = answer;
+
+        //answerHistory is an array of objects to display 
+        answerHistory.push(newCalc);
         console.log(answerHistory);
 
         io.emit('new calculation', answerHistory);
     });
+
+    //if new to the app, will get what is in current calculation history
+    socket.on('getHistory', () => {
+        io.emit('new calculation', answerHistory);
+
+    })
 
 });
 
