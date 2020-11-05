@@ -40,15 +40,25 @@
         };
 
         socket.on('new calculation', function(answerHistory){
-            $('#postCalcs').append($('<li>').text(answerHistory));
+            // empty the ul of any elements it has
+            $('#postCalcs').empty(); 
+            // append the values of each calculation from the array to the DOM
+            for (let calc of answerHistory) {
+                $('#postCalcs').append(`
+                    <li>
+                        <p>
+                            ${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.answer}
+                        </p>
+                    </li>
+                `);
+            };
+
         });
-
-
     </script>
-    <title>jquery server side calculator</title>
+    <title>super fun calculator</title>
  </head> 
 <body>
-    <h1>Server Side Calculator</h1>
+    <h1>Super Fun Calculator!!!</h1>
     <input type="number" placeholder="" id="firstNumber"/>
     
     <button id="addButton" class="operatorButton">+</button>
