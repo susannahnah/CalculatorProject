@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 5000;
 
 //giving access to req.body sent from front end to serverside
 app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(express.json());
+
 
 //function - creating "GET" route
 app.get('/', (req, res) => {
@@ -18,6 +20,8 @@ app.post('/newequation', (req, res) => {
     console.log(req.body);
     res.sendStatus(200);
 })
+
+
 
 
 
