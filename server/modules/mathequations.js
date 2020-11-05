@@ -1,6 +1,6 @@
 //abstraction of math equations
 // create math functions using x, y, and operator variables
-const tacoMath = function(x, y, Operator) {
+const tacoMath = function(x, y, operator) {
     
     //create variable that will be returned at end function
     let result;
