@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>const socket = io();</script>
     <script>
         $(document).ready(onReady);
         
@@ -29,6 +31,7 @@
             operator: operator
             };
             console.log(newCalc);
+            socket.emit('calculation', newCalc);
         }
 
         //clearing out all input fields
@@ -36,6 +39,9 @@
             $('input').val('');
         };
 
+        socket.on('new calculation', function(answerHistory){
+            $('#postCalcs').append($('<li>').text(answerHistory));
+        });
 
     </script>
     <title>jquery server side calculator</title>
