@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="jquery.js"></script>
-    <script src="client.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(onReady);
+        
+        function onReady() {
+        
+            //connect buttons in html to button functions
+            $('.operatorButton').on('click', getOperator);
+            $('#sumButton').on('click', sumButtonHandler);
+            $('#clearButton').on('click', clearButtonHandler);
+        
+        };
+
+        function getOperator() {
+            operator = this.innerHTML;
+            console.log(operator);
+        };
+
+        function sumButtonHandler() {
+            const newCalc = {
+            numOne: $('#firstNumber').val(),
+            numTwo: $('#secondNumber').val(),
+            operator: operator
+            };
+            console.log(newCalc);
+        }
+
+        //clearing out all input fields
+        function clearButtonHandler() {
+            $('input').val('');
+        };
+
+
+    </script>
     <title>jquery server side calculator</title>
  </head> 
 <body>
