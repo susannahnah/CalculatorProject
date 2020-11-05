@@ -11,7 +11,6 @@
         $(document).ready(onReady);
         
         function onReady() {
-        
             //connect buttons in html to button functions
             $('.operatorButton').on('click', getOperator);
             $('#sumButton').on('click', sumButtonHandler);
@@ -34,7 +33,6 @@
             socket.emit('calculation', newCalc);
         }
 
-        //clearing out all input fields
         function clearButtonHandler() {
             $('input').val('');
         };
